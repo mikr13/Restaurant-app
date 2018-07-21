@@ -1,6 +1,4 @@
-import { Comment } from './comment.model';
-
-export class Dish {
+export class Promotion {
   id: number;
   name: string;
   image: string;
@@ -9,5 +7,4 @@ export class Dish {
   price: string;
   featured: boolean;
   description: string;
-  comments: Comment[];
 }

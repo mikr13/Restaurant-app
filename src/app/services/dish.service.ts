@@ -13,5 +13,16 @@ export class DishService {
   getDishes(): Dish[] {
     return Dishes;
   }
+  getDish(id: number): Dish {
+    return Dishes.filter((dish) => (dish.id === id))[0];
+    // as filter gives an array but we need element from that array so used 0 and arrow function
+  }
+
+  getFeaturedDish(): Dish {
+    // normal function also
+    return Dishes.filter(function(dish) {
+      return dish.featured;
+    })[0];
+  }
 
 }

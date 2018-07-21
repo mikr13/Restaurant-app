@@ -1,0 +1,33 @@
+// variables
+$lt-gray: #ddd;
+$background-dark: #5D4C46;
+$background-light: #7B8D8E;
+$background-pale: #D1C4E9;
+$background-moredark: rgb(77, 63, 58);
+@mixin zero-margin($pad-up-down, $pad-left-right) {
+  margin: 0px auto;
+  padding: $pad-up-down $pad-left-right;
+}
+
+// style
+.jumbotron {
+  @include zero-margin(70px, 30px);
+  background: $background-light;
+  color: floralwhite;
+  min-height: 300px !important;
+  max-height: 350px !important;
+}
+
+mat-toolbar {
+  background: $background-dark;
+}
+
+.example-fill-remaining-space {
+  /* This fills the remaining space, by using flexbox.
+     Every toolbar row uses a flexbox row layout. */
+  flex: 1 1 auto;
+}
+
+.active {
+  background: $background-moredark;
+}
