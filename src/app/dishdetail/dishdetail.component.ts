@@ -3,7 +3,6 @@ import { Params, ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 
 import { Dish } from '../shared/dish.model';
-
 // was not needed before in same page
 import { DishService } from '../services/dish.service';
 
