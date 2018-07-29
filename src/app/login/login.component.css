@@ -3,5 +3,9 @@ mat-toolbar {
 }
 
 .close {
-  font-size: 15px !important;
+  font-size: 25px !important;
+}
+
+.login-button {
+  background-color: #7B8D8E;
 }
