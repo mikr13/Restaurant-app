@@ -10,19 +10,19 @@ export class LeaderService {
 
   constructor() { }
 
-  getLeaders(): Leader[] {
-    return Leaders;
+  getLeaders(): Promise<Leader[]> {
+    return Promise.resolve(Leaders);
   }
 
-  getLeader(id: number): Leader {
-    return Leaders.filter((lead) => (lead.id === id))[0];
+  getLeader(id: number): Promise<Leader> {
+    return Promise.resolve(Leaders.filter((lead) => (lead.id === id))[0]);
     // as filter gives an array but we need element from that array so used 0 and arrow function
   }
 
-  getFeaturedLeader(): Leader {
+  getFeaturedLeader(): Promise<Leader> {
     // normal function also
-    return Leaders.filter(function (lead) {
+    return Promise.resolve(Leaders.filter(function(lead) {
       return lead.featured;
-    })[0];
+    })[0]);
   }
 }

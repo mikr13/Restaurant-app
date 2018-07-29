@@ -10,19 +10,20 @@ export class DishService {
 
   constructor() { }
 
-  getDishes(): Dish[] {
-    return Dishes;
+  getDishes(): Promise<Dish[]> {
+    return Promise.resolve(Dishes);
   }
-  getDish(id: number): Dish {
-    return Dishes.filter((dish) => (dish.id === id))[0];
+
+  getDish(id: number): Promise<Dish> {
+    return Promise.resolve(Dishes.filter((dish) => (dish.id === id))[0]);
     // as filter gives an array but we need element from that array so used 0 and arrow function
   }
 
-  getFeaturedDish(): Dish {
+  getFeaturedDish(): Promise<Dish> {
     // normal function also
-    return Dishes.filter(function(dish) {
+    return Promise.resolve(Dishes.filter(function(dish) {
       return dish.featured;
-    })[0];
+    })[0]);
   }
 
 }

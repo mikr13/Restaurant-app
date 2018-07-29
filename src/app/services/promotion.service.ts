@@ -10,19 +10,19 @@ export class PromotionService {
 
   constructor() { }
 
-  getPromotions(): Promotion[] {
-    return Promotions;
+  getPromotions(): Promise<Promotion[]> {
+    return Promise.resolve(Promotions);
   }
-  getPromotion(id: number): Promotion {
-    return Promotions.filter((promo) => (promo.id === id))[0];
+  getPromotion(id: number): Promise<Promotion> {
+    return Promise.resolve(Promotions.filter((promo) => (promo.id === id))[0]);
     // as filter gives an array but we need element from that array so used 0 and arrow function
   }
 
-  getFeaturedPromotion(): Promotion {
+  getFeaturedPromotion(): Promise<Promotion> {
     // normal function also
-    return Promotions.filter(function (promo) {
+    return Promise.resolve(Promotions.filter(function (promo) {
       return promo.featured;
-    })[0];
+    })[0]);
   }
 
 }
