@@ -13,6 +13,10 @@ export class DishService {
 
   constructor() { }
 
+  getDishIds(): Observable<number[] | any> {
+    return of(Dishes.map(dish => dish.id));
+  }
+
   getDishes(): Observable<Dish[]> {
     // return Promise.resolve(Dishes); normal promise
 
