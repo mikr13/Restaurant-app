@@ -1,17 +1,33 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Promotion } from '../shared/promotion.model';
-import { Promotions } from '../shared/promotions';
+import { baseURL } from '../shared/baseurl';
 
 import { of, Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class PromotionService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getPromotions(): Observable<Promotion[]> {
+    return this.http.get<Promotion[]>(baseURL + 'promotions');
+  }
+
+  getPromotion(id: number): Observable<Promotion> {
+    return this.http.get<Promotion>(baseURL + 'promotions/' + id);
+  }
+
+  getFeaturedPromotion(): Observable<Promotion> {
+    return this.http.get<Promotion[]>(baseURL + 'promotions?featured=true').pipe(map(leader => leader[0]));
+  }
+
+
+  /* constructor() { }
 
   getPromotions(): Observable<Promotion[]> {
     // return Promise.resolve(Promotions);
@@ -20,7 +36,7 @@ export class PromotionService {
       setTimeout(() => {
         resolve(Promotions);
       }, 1000);
-    }); */
+    }); //
 
     return of(Promotions).pipe(delay(1000));
   }
@@ -32,7 +48,7 @@ export class PromotionService {
       setTimeout(() => {
         resolve(Promotions.filter((promo) => (promo.id === id))[0]);
       }, 1000);
-    }); */
+    }); //
     // as filter gives an array but we need element from that array so used 0 and arrow function
 
     return of(Promotions.filter((promo) => (promo.id === id))[0]).pipe(delay(1000));
@@ -48,9 +64,9 @@ export class PromotionService {
       setTimeout(() => {
         resolve(Promotions.filter((promo) => (promo.featured))[0]);
       }, 1000);
-    }); */
+    }); //
 
     return of(Promotions.filter((promo) => (promo.featured))[0]).pipe(delay(1000));
-  }
+  } */
 
 }

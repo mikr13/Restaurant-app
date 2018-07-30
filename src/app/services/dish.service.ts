@@ -1,17 +1,37 @@
 import { Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 import { Dish } from '../shared/dish.model';
-import { Dishes } from '../shared/dishes';
+import { baseURL } from '../shared/baseurl';
 
 import { of, Observable } from 'rxjs';
-import { delay } from 'rxjs/operators';
+import { map } from 'rxjs/operators';
 
 @Injectable({
   providedIn: 'root'
 })
 export class DishService {
 
-  constructor() { }
+  constructor(private http: HttpClient) { }
+
+  getDishes(): Observable<Dish[]> {
+    return this.http.get<Dish[]>(baseURL + 'dishes');
+  }
+
+  getDish(id: number): Observable<Dish> {
+    return this.http.get<Dish>(baseURL + 'dishes/' + id);
+  }
+
+  getFeaturedDish(): Observable<Dish> {
+    return this.http.get<Dish[]>(baseURL + 'dishes?featured=true').pipe(map(dish => dish[0]));
+  }
+
+  getDishIds(): Observable<number[] | any> {
+    return this.getDishes().pipe(map(dishes => dishes.map(dish => dish.id)));
+  }
+
+
+  /* constructor() { }
 
   getDishIds(): Observable<number[] | any> {
     return of(Dishes.map(dish => dish.id));
@@ -24,7 +44,7 @@ export class DishService {
       setTimeout(() => {
         resolve(Dishes);
       }, 1000);
-    }); and the delay promise for server latency dummy */
+    }); and the delay promise for server latency dummy //
 
     return of(Dishes).pipe(delay(1000));
   }
@@ -36,7 +56,7 @@ export class DishService {
       setTimeout(() => {
         resolve(Dishes.filter((dish) => (dish.id === id))[0]);
       }, 1000);
-    }); */
+    }); //
     // as filter gives an array but we need element from that array so used 0 and arrow function
 
     return of(Dishes.filter((dish) => (dish.id === id))[0]).pipe(delay(1000));
@@ -52,9 +72,9 @@ export class DishService {
       setTimeout(() => {
         resolve(Dishes.filter((dish) => (dish.featured))[0]);
       }, 1000);
-    }); */
+    }); //
 
     return of(Dishes.filter((dish) => (dish.featured))[0]).pipe(delay(1000));
-  }
+  } */
 
 }
