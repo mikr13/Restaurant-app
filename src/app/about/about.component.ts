@@ -12,8 +12,7 @@ import { LeaderService } from '../services/leader.service';
 export class AboutComponent implements OnInit {
 
   leaders: Leader[];
-
-  selectedLeader: Leader;
+  leaderErrMess: string;
 
   constructor(private leaderService: LeaderService, @Inject('BaseURL') private BaseURL) { }
 
@@ -21,7 +20,8 @@ export class AboutComponent implements OnInit {
     /* this.leaderservice.getLeaders()
       .then(leaders => this.leaders = leaders); */
 
-    this.leaderService.getLeaders().subscribe(leaders => this.leaders = leaders);
+    this.leaderService.getLeaders().subscribe(leaders => this.leaders = leaders,
+      leaderErrMess => this.leaderErrMess = <any>leaderErrMess);
   }
 
 }

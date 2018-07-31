@@ -18,6 +18,9 @@ export class HomeComponent implements OnInit {
   dish: Dish;
   promotion: Promotion;
   leader: Leader;
+  dishErrMess: string;
+  leaderErrMess: string;
+  promoErrMess: string;
 
   constructor(private dishService: DishService,
       private promotionService: PromotionService,
@@ -32,9 +35,12 @@ export class HomeComponent implements OnInit {
     this.leaderservice.getFeaturedLeader()
       .then(leader => this.leader = leader); for promises */
 
-    this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish);
-    this.promotionService.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion);
-    this.leaderService.getFeaturedLeader().subscribe(leader => this.leader = leader);
+    this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish,
+      dishErrMess => this.dishErrMess = <any>dishErrMess);
+    this.promotionService.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion,
+      promoErrMess => this.promoErrMess = <any>promoErrMess);
+    this.leaderService.getFeaturedLeader().subscribe(leader => this.leader = leader,
+      leaderErrMess => this.leaderErrMess = <any>leaderErrMess);
   }
 
 }

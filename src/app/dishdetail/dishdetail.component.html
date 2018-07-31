@@ -65,6 +65,10 @@
 
 </div>
 
-<div [hidden]="dish" align="center">
+<div [hidden]="dish || errMess" align=" center ">
   <mat-spinner></mat-spinner>Loading . . . Please Wait
+</div>
+<div *ngIf="errMess">
+  <h2>Error</h2>
+  <h4>{{errMess}}</h4>
 </div>

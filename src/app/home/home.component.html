@@ -47,16 +47,29 @@
   </mat-card-content>
 </mat-card>
 
-<div [hidden]="dish" align="center">
+<div [hidden]="dish || dishErrMess" align="center">
   <mat-spinner></mat-spinner>Loading . . . Please Wait
 </div>
 
-<div [hidden]="promotion" align="center">
+<div [hidden]="promotion || promoErrMess" align="center">
   <mat-spinner></mat-spinner>Loading . . . Please Wait
 </div>
 
-<div [hidden]="leader" align="center">
+<div [hidden]="leader || leaderErrMess" align="center">
   <mat-spinner></mat-spinner>Loading . . . Please Wait
+</div>
+
+<div *ngIf="dishErrMess" align="center">
+  <h2>Error</h2>
+  <h4>{{dishErrMess}}</h4>
+</div>
+<div *ngIf="promoErrMess" align="center">
+  <h2>Error</h2>
+  <h4>{{promoErrMess}}</h4>
+</div>
+<div *ngIf="leaderErrMess" align="center">
+  <h2>Error</h2>
+  <h4>{{leaderErrMess}}</h4>
 </div>
 
 </div>
