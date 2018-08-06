@@ -28,19 +28,33 @@ export class HomeComponent implements OnInit {
       @Inject('BaseURL') private BaseURL) { }
 
   ngOnInit() {
-    /* this.dishservice.getFeaturedDish()
+
+    this.dishService.getFeaturedDish()
+      .subscribe(dish => this.dish = dish,
+        errmess => this.dishErrMess = <any>errmess.message);
+    this.promotionService.getFeaturedPromotion()
+      .subscribe(promotion => this.promotion = promotion,
+        errmess => this.promoErrMess = <any>errmess.message);
+    this.leaderService.getFeaturedLeader()
+      .subscribe(leader => this.leader = leader,
+        errmess => this.leaderErrMess = <any>errmess.message);
+
+
+    /*
+    this.dishservice.getFeaturedDish()
       .then(dish => this.dish = dish);
     this.promotionservice.getFeaturedPromotion()
       .then(promotion => this.promotion = promotion );
     this.leaderservice.getFeaturedLeader()
       .then(leader => this.leader = leader); for promises */
 
+    /* Observable subscribe
     this.dishService.getFeaturedDish().subscribe(dish => this.dish = dish,
       dishErrMess => this.dishErrMess = <any>dishErrMess);
     this.promotionService.getFeaturedPromotion().subscribe(promotion => this.promotion = promotion,
       promoErrMess => this.promoErrMess = <any>promoErrMess);
     this.leaderService.getFeaturedLeader().subscribe(leader => this.leader = leader,
-      leaderErrMess => this.leaderErrMess = <any>leaderErrMess);
+      leaderErrMess => this.leaderErrMess = <any>leaderErrMess); */
   }
 
 }

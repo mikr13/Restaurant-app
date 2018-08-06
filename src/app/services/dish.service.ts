@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
+import { Restangular } from 'ngx-restangular';
 
 import { Dish } from '../shared/dish.model';
 import { baseURL } from '../shared/baseurl';
@@ -14,6 +15,29 @@ import { ProcessHTTPMsgService } from './process-httpmsg.service';
 })
 export class DishService {
 
+  constructor(private restangular: Restangular) { }
+
+  getDishes(): Observable<Dish[]> {
+    return this.restangular.all('dishes').getList();
+  }
+
+  getDish(id: number): Observable<Dish> {
+    return this.restangular.one('dishes', id).get();
+  }
+
+  getFeaturedDish(): Observable<Dish> {
+    return this.restangular.all('dishes').getList({ featured: true })
+      .pipe(map(dish => dish[0]));
+  }
+
+  getDishIds(): Observable<number[] | any> {
+    return this.getDishes()
+      .pipe(map(dishes => dishes.map(dish => dish.id)),
+        catchError(error => error));
+  }
+
+
+  /* Observable and http way
   constructor(private http: HttpClient, private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   getDishes(): Observable<Dish[]> {
@@ -36,7 +60,8 @@ export class DishService {
       .pipe(catchError(error => error));
   }
 
-  /* constructor() { }
+  /* Observable way
+  constructor() { }
 
   getDishIds(): Observable<number[] | any> {
     return of(Dishes.map(dish => dish.id));

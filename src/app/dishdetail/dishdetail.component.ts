@@ -19,7 +19,7 @@ export class DishdetailComponent implements OnInit {
   dishIds: number[];
   prev: number;
   next: number;
-  errMess: string;
+  dishErrMess: string;
 
   commentForm: FormGroup;
   comment: Comment;
@@ -36,6 +36,8 @@ export class DishdetailComponent implements OnInit {
       'required': 'A brief desciption of feedback or complaint required'
     }
   };
+  dishcopy = null;
+
   @ViewChild('cform') commentFormDirective;
 
   constructor(private dishService: DishService,
@@ -49,11 +51,17 @@ export class DishdetailComponent implements OnInit {
   ngOnInit() {
     this.dishService.getDishIds()
       .subscribe(dishIds => this.dishIds = dishIds,
-        errmess => this.errMess = <any>errmess);
+        errmess => this.dishErrMess = <any>errmess.message);
 
+      this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(+params['id'])))
+      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
+          errmess => { this.dish = null; this.dishErrMess = <any>errmess; });
+
+    /*
     this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(+params['id'])))
       .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
-        errmess => this.errMess = <any>errmess);
+      errmess => this.dishErrMess = <any>errmess.message);
+    */
   }
 
   createForm() {
@@ -72,7 +80,6 @@ export class DishdetailComponent implements OnInit {
   onSubmit() {
     this.comment = this.commentForm.value;
     this.comment.date = new Date().toISOString();
-    this.dish.comments.push(this.comment);
 
     this.commentFormDirective.resetForm();
     this.commentForm.reset({
@@ -80,6 +87,10 @@ export class DishdetailComponent implements OnInit {
       rating: 5,
       comment: ''
     });
+
+    this.dishcopy.comments.push(this.comment);
+    this.dishcopy.save()
+      .subscribe(dish => { this.dish = dish; console.log(this.dish); });
   }
 
   onValueChanged(data?: any) {

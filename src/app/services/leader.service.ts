@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
+import { Restangular } from 'ngx-restangular';
+
 import { Leader } from '../shared/leader.model';
 import { baseURL } from '../shared/baseurl';
 
@@ -14,6 +16,23 @@ import { ProcessHTTPMsgService } from './process-httpmsg.service';
 })
 export class LeaderService {
 
+  constructor(private restangular: Restangular) { }
+
+  getLeaders(): Observable<Leader[]> {
+    return this.restangular.all('leaders').getList();
+  }
+
+  getLeader(id: number): Observable<Leader> {
+    return this.restangular.one('leaders', id).get();
+  }
+
+  getFeaturedLeader(): Observable<Leader> {
+    return this.restangular.all('leaders').getList({ featured: true })
+      .pipe(map(leader => leader[0]));
+  }
+
+
+  /* Observable and http way
   constructor(private http: HttpClient, private processHTTPMsgService: ProcessHTTPMsgService) { }
 
   getLeaders(): Observable<Leader[]> {
@@ -33,7 +52,8 @@ export class LeaderService {
 
 
 
-  /* constructor() { }
+  /* Observable way
+  constructor() { }
 
   getLeaders(): Observable<Leader[]> {
     // return Promise.resolve(Leaders);
