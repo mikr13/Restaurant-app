@@ -5,9 +5,9 @@
 
 //variables
 $lt-gray: #ddd;
-$background-dark: #512DA8;
-$background-light: #9575CD;
-$background-pale: #D1C4E9;
+$background-dark: #5D4C46;
+$background-light: #7B8D8E;
+$background-pale: rgb(255, 250, 232);
 $primary-color-dark : #512DA8;
 $primary-color : #673AB7;
 $primary-color-light : #D1C4E9;
@@ -48,4 +48,15 @@ body {
 
 .flex-spacer {
   flex: 1 1 auto;
+}
+
+.highlight {
+  background-color: $background-pale;
+  border: 1px solid $primary-color-dark;
+  z-index: 1;
+  transform: scale(1.05);
+  -webkit-transform: scale(1.05);
+  -moz-transform: scale(1.05);
+  -ms-transform: scale(1.05);
+  -o-transform: scale(1.05);
 }
