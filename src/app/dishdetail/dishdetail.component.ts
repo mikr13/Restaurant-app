@@ -7,11 +7,22 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Dish } from '../shared/dish.model';
 import { DishService } from '../services/dish.service';
 import { Comment } from '../shared/comment.model';
+import { visibility, flyInOut, expand } from '../animations/app.animation';
 
 @Component({
   selector: 'app-dishdetail',
   templateUrl: './dishdetail.component.html',
-  styleUrls: ['./dishdetail.component.scss']
+  styleUrls: ['./dishdetail.component.scss'],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    visibility(),
+    flyInOut(),
+    expand()
+  ]
 })
 export class DishdetailComponent implements OnInit {
 
@@ -20,6 +31,7 @@ export class DishdetailComponent implements OnInit {
   prev: number;
   next: number;
   dishErrMess: string;
+  visibility = 'shown';
 
   commentForm: FormGroup;
   comment: Comment;
@@ -53,15 +65,15 @@ export class DishdetailComponent implements OnInit {
       .subscribe(dishIds => this.dishIds = dishIds,
         errmess => this.dishErrMess = <any>errmess.message);
 
-      this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(+params['id'])))
-      .subscribe(dish => { this.dish = dish; this.dishcopy = dish; this.setPrevNext(dish.id); },
-          errmess => { this.dish = null; this.dishErrMess = <any>errmess; });
-
-    /*
-    this.route.params.pipe(switchMap((params: Params) => this.dishService.getDish(+params['id'])))
-      .subscribe(dish => { this.dish = dish; this.setPrevNext(dish.id); },
-      errmess => this.dishErrMess = <any>errmess.message);
-    */
+    this.route.params.pipe(switchMap((params: Params) => {
+      this.visibility = 'hidden';
+      return this.dishService.getDish(+params['id']);
+    })).subscribe(dish => {
+      this.dish = dish;
+      this.dishcopy = dish;
+      this.setPrevNext(dish.id);
+      this.visibility = 'shown';
+    }, errmess => this.dishErrMess = <any>errmess);
   }
 
   createForm() {

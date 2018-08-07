@@ -4,11 +4,21 @@ import { Dish } from '../shared/dish.model';
 
 import { DishService } from '../services/dish.service';
 
+import { flyInOut, expand } from '../animations/app.animation';
 
 @Component({
   selector: 'app-menu',
   templateUrl: './menu.component.html',
-  styleUrls: ['./menu.component.css']
+  styleUrls: ['./menu.component.css'],
+  // tslint:disable-next-line:use-host-property-decorator
+  host: {
+    '[@flyInOut]': 'true',
+    'style': 'display: block;'
+  },
+  animations: [
+    flyInOut(),
+    expand()
+  ]
 })
 export class MenuComponent implements OnInit {
 
