@@ -61,6 +61,7 @@ export class DishdetailComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.dishService.getDishIds()
       .subscribe(dishIds => this.dishIds = dishIds,
         errmess => this.dishErrMess = <any>errmess.message);
@@ -74,6 +75,7 @@ export class DishdetailComponent implements OnInit {
       this.setPrevNext(dish.id);
       this.visibility = 'shown';
     }, errmess => this.dishErrMess = <any>errmess);
+
   }
 
   createForm() {
