@@ -1,0 +1,82 @@
+# Snyk (https://snyk.io) policy file, patches or ignores known vulnerabilities.
+version: v1.16.0
+ignore: {}
+# patches apply the minimum changes required to fix a vulnerability
+patch:
+  'npm:debug:20170905':
+    - karma > socket.io > socket.io-adapter > socket.io-parser > debug:
+        patched: '2020-06-27T06:18:39.453Z'
+  'npm:hoek:20180212':
+    - '@angular-devkit/build-angular > node-sass > node-gyp > request > hawk > hoek':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > node-sass > node-gyp > request > hawk > boom > hoek':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > node-sass > node-gyp > request > hawk > sntp > hoek':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > node-sass > node-gyp > request > hawk > cryptiles > boom > hoek':
+        patched: '2020-06-27T06:18:39.453Z'
+  SNYK-JS-LODASH-567746:
+    - '@angular-devkit/build-angular > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > html-webpack-plugin > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > stats-webpack-plugin > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > webpack-merge > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma > combine-lists > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > node-sass > sass-graph > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > async > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-types > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-types > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-generator > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-generator > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-traverse > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-traverse > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-template > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > node-sass > gaze > globule > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-generator > babel-types > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-generator > babel-types > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-traverse > babel-types > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-traverse > babel-types > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-types > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-template > babel-types > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-traverse > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > istanbul-instrumenter-loader > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - karma-coverage-istanbul-reporter > istanbul-api > istanbul-lib-instrument > babel-template > babel-traverse > babel-types > lodash:
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > webpack-dev-server > http-proxy-middleware > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > webpack-dev-server > portfinder > async > lodash':
+        patched: '2020-06-27T06:18:39.453Z'
+  'npm:ms:20170412':
+    - karma > socket.io > socket.io-adapter > socket.io-parser > debug > ms:
+        patched: '2020-06-27T06:18:39.453Z'
+  SNYK-JS-TREEKILL-536781:
+    - '@angular-devkit/build-angular > tree-kill':
+        patched: '2020-06-27T06:18:39.453Z'
+    - '@angular-devkit/build-angular > @ngtools/webpack > tree-kill':
+        patched: '2020-06-27T06:18:39.453Z'
